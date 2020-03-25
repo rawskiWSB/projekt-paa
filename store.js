@@ -1,5 +1,5 @@
 const storage = require('azure-storage')
-const service = storage.createTableService()
+const service = storage.createTableService().withFilter(retryOperations);
 const table = 'tasks'
 
 const init = async () => (
@@ -11,7 +11,6 @@ const init = async () => (
 )
 const RetryPolicyFilter = require('./retrypolicyfilter');
  const retryOperations = new storage.ExponentialRetryPolicyFilter();
- const tableSvc = storage.createTableService().withFilter(retryOperations);
 
 module.exports = {
   init
