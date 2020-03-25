@@ -4,3 +4,11 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+block content
+form(action="/tasks/add", method="post")
+    label(for="title")
+      | Tytuł
+    br
+    input(type="text" id="title" name="title")
+    br
+    input(type="submit", value="Dodaj")
