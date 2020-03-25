@@ -1,9 +1,6 @@
 extends layout
 
 block content
-form(action="/tasks/add", method="POST")
-    label(for="title") | Tytuł
-    br
-    input(type="text", id="title", name="title")
-    br
-    input(type="submit", value="Dodaj")
+
+h1= title
+   p Welcome to #{title}
