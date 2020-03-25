@@ -9,6 +9,9 @@ const init = async () => (
     })
   })
 )
+const RetryPolicyFilter = require('./retrypolicyfilter');
+ const retryOperations = new storage.ExponentialRetryPolicyFilter();
+ const tableSvc = storage.createTableService().withFilter(retryOperations);
 
 module.exports = {
   init
