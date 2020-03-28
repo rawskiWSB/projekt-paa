@@ -12,10 +12,11 @@ block content
     textarea(id="info" cols="30" rows="4")
     br
     input(type="submit", value="Dodaj")
-  
-  table
-    tr
-      th(scope= "col") Tytuł
-    each task in tasks
+  table(style={border: '1px solid black'})
+    tr(style={border: '1px solid black'})
+      th(scope= "col" style={border: '1px solid black'}) Tytuł
+      th(scope= "col") Opis
+    each task in tasks  
       tr
-        td= task.title
+        td(style={border: '1px solid black'})= "task.title"
+        td= "task.info"
