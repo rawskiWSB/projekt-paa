@@ -13,7 +13,7 @@ const init = async () => (
     })
   })
 )
-const createTask = async (title) => (
+const createTask = async () => (
   new Promise((resolve, reject) => {
     const generator = storage.TableUtilities.entityGenerator
     const task = {
