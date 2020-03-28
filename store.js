@@ -21,32 +21,32 @@ const createTask = async (title) => (
       RowKey: generator.String(uuid.v4()),
       title
     }
-const task2 = {
-      PartitionKey: generator.String('task2'),
-      RowKey: generator.String(uuid.v4()),
-      info
-    }
-
     service.insertEntity(table, task, (error, result, response) => {
       !error ? resolve() : reject()
     })
   })
 )
+
+const createTaskInfo = async (info) => (
+  new Promise((resolve, reject) => {
+    const generator = storage.TableUtilities.entityGenerator
+    const task2 = {
+      PartitionKey: generator.String('task2'),
+      RowKey: generator.String(uuid.v4()),
+      info
+    }
+    service.insertEntity(table, task, (error, result, response) => {
+      !error ? resolve() : reject()
+    })
+  })
+)
+
 const listTasks = async () => (
   new Promise((resolve, reject) => {
     const query = new storage.TableQuery()
       .select(['title'])
       .where('PartitionKey eq ?', 'task')
-const query2 = new storage.TableQuery()
-      .select(['info'])
-      .where('PartitionKey eq ?', 'task2')
-service.queryEntities(table, query, null, (error, result, response) => {
-      !error ? resolve(result.entries.map((entry) => ({
-        info: entry.info._
-      }))) : reject()
-    })
-  })
-
+    
     service.queryEntities(table, query, null, (error, result, response) => {
       !error ? resolve(result.entries.map((entry) => ({
         title: entry.title._
@@ -55,8 +55,24 @@ service.queryEntities(table, query, null, (error, result, response) => {
   })
 )
 
+const listTasksInfo = async () => (
+  new Promise((resolve, reject) => {
+    const query = new storage.TableQuery()
+      .select(['info'])
+      .where('PartitionKey eq ?', 'task2')
+    
+    service.queryEntities(table, query, null, (error, result, response) => {
+      !error ? resolve(result.entries.map((entry) => ({
+        info: entry.info._
+      }))) : reject()
+    })
+  })
+)
+
 module.exports = {
   init,
 createTask,
-listTasks
+listTasks,
+  listTasksInfo,
+  createTaskInfo
 }
