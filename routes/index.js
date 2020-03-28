@@ -7,8 +7,8 @@ router.get('/', async (ctx, next) => {
 })
 
 router.get('/', async (ctx, next) => {
-  tasks2 = await store.listTasksInfo()
-  await ctx.render('index', { tasks2 })
+  tasks = await store.listTasksInfo()
+  await ctx.render('index', { tasks })
 })
 
 
