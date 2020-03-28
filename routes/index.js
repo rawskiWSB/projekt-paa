@@ -6,11 +6,6 @@ router.get('/', async (ctx, next) => {
   await ctx.render('index', { tasks })
 })
 
-router.get('/', async (ctx, next) => {
-  tasks = await store.listTasksInfo()
-  await ctx.render('index', { tasks })
-})
-
 
 router.get('/string', async (ctx, next) => {
   ctx.body = 'koa2 string'
