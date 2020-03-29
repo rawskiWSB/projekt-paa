@@ -14,10 +14,11 @@ block content
     input(type="submit", value="Dodaj")
   table(style={border: '1px solid black'})
     tr(style={border: '1px solid black'})
-      th(scope= "col" style={border: '1px solid black'}) Tytuł
+      th(scope= "col") Tytuł
       th(scope= "col") Opis
       th(scope= "col") Status
-      th(scope= "col") Akcje  
+      th(scope= "col") Akcje
+      th(scope= "col") Usun  
     each task in tasks
       tr
         td= task.title
@@ -25,5 +26,7 @@ block content
         td= (task.status == 'completed' ? 'Zakończone' : 'Otwarte')
         td
          button(type="button" onclick=`updateTaskStatus('${task.id}', 'completed')`) ✓
+        td
+         button(type="button") X
 block scripts
   script(src="javascripts/index.js")
