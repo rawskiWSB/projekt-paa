@@ -37,7 +37,7 @@ const listTasks = async () => (
     service.queryEntities(table, query, null, (error, result, response) => {
       !error ? resolve(result.entries.map((entry) => ({
         title: entry.title._,
-        info: entry.title._
+        info: entry.info._
       }))) : reject()
     })
   })
