@@ -20,6 +20,7 @@ const createTask = async (title) => (
       PartitionKey: generator.String('task'),
       RowKey: generator.String(uuid.v4()),
       title,
+      info,
       status: 'open'
     }
     service.insertEntity(table, task, (error, result, response) => {
@@ -33,14 +34,13 @@ const listTasks = async () => (
     const query = new storage.TableQuery()
       .select(['RowKey', 'title', 'info', 'status'])
       .where('PartitionKey eq ?', 'task')
-    
+ 
     service.queryEntities(table, query, null, (error, result, response) => {
       !error ? resolve(result.entries.map((entry) => ({
         id: entry.id._,
         title: entry.title._,
         info: entry.info._,
         status: entry.status._
-        
       }))) : reject()
     })
   })
@@ -60,7 +60,7 @@ const updateTaskStatus = async (id, status) => (
   })
 )
 module.exports = {
-  init,
+ init,
 createTask,
 listTasks,
 updateTaskStatus
