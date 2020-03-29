@@ -4,9 +4,8 @@ const store = require('../store')
 router.prefix('/tasks')
 
 router.post('/add', async (ctx, next) => {
-    const { title, info } = ctx.request.body
-
-  await store.createTask(title, info)
+    const { title } = ctx.request.body
+  await store.createTask(title)
   ctx.redirect('/')
 })
 
