@@ -17,7 +17,7 @@ router.post('/updateStatus', async (ctx, next) => {
 router.delete('/deleteTask', async (ctx, next) => {
   const { id } = ctx.request.body
   await store.deleteTask(id)
-  ctx.status = 200
+  ctx.status = 204
 })
 
 
