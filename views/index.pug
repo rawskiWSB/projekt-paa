@@ -21,7 +21,7 @@ block content
     each task in tasks
       tr
         td= task.title
-        td= task.info
+        td= (task.info == null ? "Brak opisu" : task.info)
         td= (task.status == 'completed' ? 'Zakończone' : 'Otwarte')
         td
          button(type="button" onclick=`updateTaskStatus('${task.id}', 'completed')`) ✓
