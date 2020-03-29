@@ -15,10 +15,7 @@ const updateTaskStatus = (id, status) => {
 
 const deleteTask = (id) => {
   fetch('/tasks/deleteTask', {
-    method: 'delete',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-    }
+    method: 'DELETE',
   })
   .finally(() => {
     window.location = '/'

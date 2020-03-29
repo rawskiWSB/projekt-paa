@@ -14,7 +14,6 @@ block content
     input(type="submit", value="Dodaj")
   table(style={border: '1px solid black'})
     tr(style={border: '1px solid black'})
-      th(scope= "col") ID
       th(scope= "col") Tytuł
       th(scope= "col") Opis
       th(scope= "col") Status
@@ -22,7 +21,6 @@ block content
       th(scope= "col") Usun  
     each task in tasks
       tr
-        td= task.id
         td= task.title
         td= (task.info == null ? "Brak opisu" : task.info)
         td= (task.status == 'completed' ? 'Zakończone' : 'Otwarte')
