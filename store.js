@@ -38,7 +38,7 @@ const listTasks = async () => (
       !error ? resolve(result.entries.map((entry) => ({
         id: entry.id._,
         title: entry.title._,
-        info: entry.info._
+        info: entry.title._
       }))) : reject()
     })
   })
