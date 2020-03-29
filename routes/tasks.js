@@ -13,4 +13,12 @@ router.post('/updateStatus', async (ctx, next) => {
   await store.updateTaskStatus(id, status)
   ctx.status = 200
 })
+
+router.delete('/deleteTask', async (ctx, next) => {
+  const { id } = ctx.request.body
+  await store.deleteTask(id)
+  ctx.status = 200
+})
+
+
 module.exports = router
